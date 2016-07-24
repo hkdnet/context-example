@@ -11,7 +11,7 @@ back1:
   environment:
     - NAME=back1
     - PORT=80
-    - SEC=1
+    - WAITING_SEC=1
 back2:
   image: hkdnet/waiting-server:latest
   ports:
@@ -19,7 +19,7 @@ back2:
   environment:
     - NAME=back2
     - PORT=80
-    - SEC=4
+    - WAITING_SEC=4
 back3:
   image: hkdnet/waiting-server:latest
   ports:
