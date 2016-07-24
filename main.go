@@ -5,14 +5,22 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"sync"
 )
 
 func main() {
 	fmt.Println("START request to backs...")
 	hosts := []string{"back1", "back2", "back3"}
+	wg := sync.WaitGroup{}
 	for _, host := range hosts {
-		req(fmt.Sprintf("http://%s/", host))
+		wg.Add(1)
+		go func(host string) {
+			req(fmt.Sprintf("http://%s/", host))
+			wg.Done()
+		}(host)
 	}
+	wg.Wait()
+
 	fmt.Println("END request to backs...")
 }
 
