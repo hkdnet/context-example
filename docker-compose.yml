@@ -1,0 +1,31 @@
+client:
+  image: hkdnet/context-example
+  links:
+    - back1:back1
+    - back2:back2
+    - back3:back3
+back1:
+  image: hkdnet/waiting-server:latest
+  ports:
+    - 80
+  environment:
+    - NAME=back1
+    - PORT=80
+    - SEC=1
+back2:
+  image: hkdnet/waiting-server:latest
+  ports:
+    - 80
+  environment:
+    - NAME=back2
+    - PORT=80
+    - SEC=1
+back3:
+  image: hkdnet/waiting-server:latest
+  ports:
+    - 80
+  environment:
+    - NAME=back3
+    - PORT=80
+    - SEC=1
+
